@@ -1,51 +1,6 @@
-body {
-    font-family: "Open Sans", sans-serif;
-    margin: 0;
-    background-color: white;
-}
-
-#title {
-    font-size: 30px;
-    font-weight: 100;
-    letter-spacing: 3px;
-    cursor: pointer;
-    margin: 0 auto;
-}
-
-span {
-    color: #009688;
-}
-
-#top-bar {
-    width: 100%;
-    box-shadow: 2px 4px 2px rgb(17 16 16 / 50%);
-    justify-content: space-around;
-    padding: 15px;
-    display: flex;
-}
-
-#nav-links {
-    display: flex;
-    list-style: none;
-    width: 30%;
-    justify-content: space-around;
-}
-
-#icons {
-    display: flex;
-    list-style: none;
-    width: 15%;
-    justify-content: space-around;
-}
-
 .product {
     margin: 40px 15px 40px 15px;
     display: flex;
-}
-
-footer {
-    margin: 20px;
-    text-align: center;
 }
 
 #product-image {
@@ -76,7 +31,7 @@ footer {
     border-radius: 5px;
 }
 
-.cart {
+.cart-btn {
     font-size: 16px;
     font-weight: bold;
     color: #fff;

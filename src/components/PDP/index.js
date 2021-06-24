@@ -46,7 +46,7 @@ const PDP = (props) => {
                         }
                     </div>
                 </div>
-                <button className="cart">
+                <button className="cart-btn">
                     Add To Cart
                 </button>
             </div>

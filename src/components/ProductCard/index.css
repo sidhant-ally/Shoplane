@@ -4,16 +4,9 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-#bootstrap-overrides .card {
-    border-radius: 100px;
-}
-
-.card-title {
     color: black;
 }
 
-.card-text {
+.card-title {
     color: black;
 }
