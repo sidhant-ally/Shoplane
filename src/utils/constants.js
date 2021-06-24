@@ -1,0 +1,1 @@
+export const PATH = "/Shoplane"  // Github repo name

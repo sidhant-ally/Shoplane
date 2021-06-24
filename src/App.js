@@ -12,6 +12,7 @@ import './App.css';
 import ProductGrid from "./components/ProductGrid"
 import TopBar from "./components/TopBar"
 import Home from "./components/Home"
+import { PATH } from "./utils/constants"
 
 function App() {
   const [clothing, updateClothing] = useState([])
@@ -40,10 +41,10 @@ function App() {
       <Router>
         <TopBar />
         <Switch>
-          <Route path="/" exact><Home /></Route>
-          <Route path="/clothing" exact><ProductGrid loading={loading} products={clothing} /></Route>
-          <Route path="/accessories" exact><ProductGrid loading={loading} products={accessory} /></Route>
-          <Route path="/product/:id" exact component={PDP} ></Route>
+          <Route path={`${PATH}/`} exact><Home /></Route>
+          <Route path={`${PATH}/clothing`} exact><ProductGrid loading={loading} products={clothing} /></Route>
+          <Route path={`${PATH}/accessories`} exact><ProductGrid loading={loading} products={accessory} /></Route>
+          <Route path={`${PATH}/product/:id`} exact component={PDP} ></Route>
         </Switch>
       </Router>
     </>
