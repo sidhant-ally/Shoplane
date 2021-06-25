@@ -17,20 +17,19 @@ import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import Error404 from "./components/Error";
 
-function App() {
-  const [clothing, updateClothing] = useState([])
-  const [accessory, updateAccessory] = useState([])
+import { connect } from "react-redux";
+import { getProducts } from "./redux/actions";
+
+function App(props) {
+  const { clothing, accessory } = props
   const [loading, updateLoading] = useState(true)
 
   useEffect(() => {
     console.log(`Fetching all products`)
     axios.get("https://5d76bf96515d1a0014085cf9.mockapi.io/product")
       .then(res => {
-        let clothing = res.data.filter(({ isAccessory }) => !isAccessory)
-        let accessory = res.data.filter(({ isAccessory }) => isAccessory)
-        updateClothing(clothing)
-        updateAccessory(accessory)
         updateLoading(false)
+        props.sendProducts(res.data);
       })
       .catch(err => alert(err))
   }, []) // componentDidMOunt
@@ -58,4 +57,13 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (store) => ({
+  clothing: store.clothing,
+  accessory: store.accessory,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  sendProducts: (payload) => dispatch(getProducts(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
