@@ -13,6 +13,9 @@ import ProductGrid from "./components/ProductGrid"
 import TopBar from "./components/TopBar"
 import Home from "./components/Home"
 import { PATH } from "./utils/constants"
+import Signin from "./components/Signin";
+import Signup from "./components/Signup";
+import Error404 from "./components/Error";
 
 function App() {
   const [clothing, updateClothing] = useState([])
@@ -45,6 +48,10 @@ function App() {
           <Route path={`${PATH}/clothing`} exact><ProductGrid loading={loading} products={clothing} /></Route>
           <Route path={`${PATH}/accessories`} exact><ProductGrid loading={loading} products={accessory} /></Route>
           <Route path={`${PATH}/product/:id`} exact component={PDP} ></Route>
+          {/* <Route component={Error} ></Route> */}
+          <Route path={`${PATH}/signin`} exact component={Signin} ></Route>
+          <Route path={`${PATH}/signup`} exact component={Signup} ></Route>
+          <Route component={Error404} />
         </Switch>
       </Router>
     </>
