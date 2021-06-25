@@ -19,6 +19,8 @@ import Error404 from "./components/Error";
 
 import { connect } from "react-redux";
 import { getProducts } from "./redux/actions";
+import Cart from "./components/Cart";
+import OrderConfirm from "./components/OrderConfirm";
 
 function App(props) {
   const { clothing, accessory } = props
@@ -50,6 +52,8 @@ function App(props) {
           {/* <Route component={Error} ></Route> */}
           <Route path={`${PATH}/signin`} exact component={Signin} ></Route>
           <Route path={`${PATH}/signup`} exact component={Signup} ></Route>
+          <Route path={`${PATH}/cart`} exact component={Cart} ></Route>
+          <Route path={`${PATH}/orderconfirm`} exact component={OrderConfirm} ></Route>
           <Route component={Error404} />
         </Switch>
       </Router>

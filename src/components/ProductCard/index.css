@@ -10,3 +10,7 @@
 .card-title {
     color: black;
 }
+
+.card button {
+    margin-top: 8px;
+}

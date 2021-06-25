@@ -9,13 +9,19 @@ const Reducers = (state = initialState, action) => {
         case "GET_PRODUCTS":
             return { ...state, clothing: action.clothing, accessory: action.accessory };
         case "GET_CART":
-            let cart = [...state.cart]
-            let product = action.product
-            let cartItem = cart.find(item => item.product.id === product.id)
-            if (cartItem)
-                cartItem.quantity = cartItem.quantity + 1
-            else
-                cart.push({ product, quantity: 1 })
+            const productId = action.product.id
+            let newProduct = true
+
+            const cart = state.cart.map((item) => {
+                if (item.product.id === productId) {
+                    item.quantity += 1
+                    newProduct = false
+                }
+                return item
+            })
+            if (newProduct)
+                cart.push({ product: action.product, quantity: 1 })
+
             return { ...state, cart };
         default:
             return state;

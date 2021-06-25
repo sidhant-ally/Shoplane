@@ -8,16 +8,18 @@ import { getCart } from '../../redux/actions';
 const ProdcutCard = (props) => {
     const { id, name, description, preview } = props.product
     return (
-        // <Link to={`${PATH}/product/${id}`}>
         <div className="card m-2" style={{ width: "18rem" }}>
-            <img className="card-img-top" src={preview} alt="Product" />
+            <Link to={`${PATH}/product/${id}`}>
+                <img className="card-img-top" src={preview} alt="Product" />
+            </Link>
             <div className="card-body">
-                <h5 className="card-title">{name}</h5>
-                <p className="card-text">{description}</p>
+                <Link to={`${PATH}/product/${id}`}>
+                    <h5 className="card-title">{name}</h5>
+                    <p className="card-text">{description}</p>
+                </Link>
                 <button className="btn btn-primary" onClick={() => props.updateCart(props.product)}>Add to cart</button>
             </div>
         </div>
-        // </Link>
     );
 }
 
