@@ -8,3 +8,10 @@ export const getProducts = (payload) => {
         accessory,
     }
 }
+
+export const getCart = (payload) => {
+    return {
+        type: "GET_CART",
+        product: payload,
+    }
+}

@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
 import { PATH } from "../../utils/constants"
 
-const NavBar = () => {
+const NavBar = ({ cart }) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
             <Link className="navbar-brand" to={`${PATH}`}><span style={{ color: "#009688" }}>SHOP</span>LANE</Link>
@@ -20,6 +21,11 @@ const NavBar = () => {
                     <li className="nav-item">
                         <Link className="nav-link" to={`${PATH}/accessories`}>ACCESSORIES</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={`${PATH}/cart`}>
+                            CART<sup>{cart?.reduce((s, { quantity }) => s + quantity, 0)}</sup>
+                        </Link>
+                    </li>
                 </ul>
                 <Link to={`${PATH}/signin`} className="btn btn-outline-primary mr-2">Sign in</Link>
                 <Link to={`${PATH}/signup`} className="btn btn-outline-primary mr-2">Sign up</Link>
@@ -28,4 +34,9 @@ const NavBar = () => {
     );
 }
 
-export default NavBar;
+
+const mapStateToProps = (store) => ({
+    cart: store.cart,
+});
+
+export default connect(mapStateToProps, null)(NavBar);
