@@ -10,6 +10,7 @@ import './App.css';
 
 // Components
 import TopBar from "./components/TopBar"
+import Footer from "./components/Footer"
 import Home from "./components/Home"
 import { PATH } from "./utils/constants"
 import Error404 from "./components/Error";
@@ -51,6 +52,7 @@ function App(props) {
           <Route path={`${PATH}/orderconfirm`} exact component={OrderConfirm} ></Route>
           <Route component={Error404} />
         </Switch>
+        <Footer />
       </Router>
     </>
   );
