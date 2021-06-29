@@ -15,3 +15,6 @@ export const getCart = (payload) => {
         product: payload,
     }
 }
+export const clearCartProducts = () => {
+    return { type: "CLEAR_CART" }
+}

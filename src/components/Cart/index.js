@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { PATH } from '../../utils/constants';
 import { connect } from 'react-redux';
-import { getProducts } from '../../redux/actions';
+import { clearCartProducts } from '../../redux/actions';
 import "./index.css"
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, clearCartProducts }) => {
     const totlaItem = cart.reduce((s, { quantity }) => s + quantity, 0)
     const totlaAmount = cart.reduce((s, { product: p, quantity }) => s + p.price * quantity, 0)
 
@@ -35,7 +35,7 @@ const Cart = ({ cart }) => {
                                 <h2>Total Amount</h2>
                                 <p>Rs <span id="total-amount">{totlaAmount}</span></p>
                                 <Link to={`${PATH}/orderconfirm`} >
-                                    <button id="place-order">Place Order</button>
+                                    <button id="place-order" onClick={() => clearCartProducts()}>Place Order</button>
                                 </Link>
                             </div>
                         </div>
@@ -51,7 +51,7 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    sendProducts: (payload) => dispatch(getProducts(payload)),
+    clearCartProducts: () => dispatch(clearCartProducts()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

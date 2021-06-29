@@ -21,8 +21,9 @@ const Reducers = (state = initialState, action) => {
             })
             if (newProduct)
                 cart.push({ product: action.product, quantity: 1 })
-
             return { ...state, cart };
+        case "CLEAR_CART":
+            return { ...state, cart: [] }
         default:
             return state;
     }
