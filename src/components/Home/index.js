@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import ProductGrid from "../ProductGrid"
+import Posters from "../Posters"
 import "./index.css"
 
 const Home = (props) => {
@@ -8,6 +9,7 @@ const Home = (props) => {
 
     return (
         <div className="App m-4">
+            <Posters />
             <div ref={clothingRef}>
                 <h2 className="section-heading">Clothing for Men and Women</h2>
                 <ProductGrid loading={loading} products={clothing} />
