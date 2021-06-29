@@ -18,3 +18,11 @@ export const getCart = (payload) => {
 export const clearCartProducts = () => {
     return { type: "CLEAR_CART" }
 }
+
+export const setRef = (clothingRef, accessoryRef) => {
+    return {
+        type: "SET_REF",
+        clothingRef,
+        accessoryRef,
+    }
+}

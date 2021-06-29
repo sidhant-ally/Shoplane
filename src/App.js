@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,20 +13,21 @@ import ProductGrid from "./components/ProductGrid"
 import TopBar from "./components/TopBar"
 import Home from "./components/Home"
 import { PATH } from "./utils/constants"
-import Signin from "./components/Signin";
-import Signup from "./components/Signup";
 import Error404 from "./components/Error";
 
 import { connect } from "react-redux";
-import { getProducts } from "./redux/actions";
+import { getProducts, setRef } from "./redux/actions";
 import Cart from "./components/Cart";
 import OrderConfirm from "./components/OrderConfirm";
 
 function App(props) {
   const { clothing, accessory } = props
   const [loading, updateLoading] = useState(true)
+  const clothingRef = useRef()
+  const accessoryRef = useRef()
 
   useEffect(() => {
+    props.sendRef(clothingRef, accessoryRef)
     console.log(`Fetching all products`)
     axios.get("https://5d76bf96515d1a0014085cf9.mockapi.io/product")
       .then(res => {
@@ -45,13 +46,9 @@ function App(props) {
       <Router>
         <TopBar />
         <Switch>
-          <Route path={`${PATH}/`} exact><Home /></Route>
-          <Route path={`${PATH}/clothing`} exact><ProductGrid loading={loading} products={clothing} /></Route>
-          <Route path={`${PATH}/accessories`} exact><ProductGrid loading={loading} products={accessory} /></Route>
+          <Route path={`${PATH}/`} exact><Home loading={loading} /></Route>
           <Route path={`${PATH}/product/:id`} exact component={PDP} ></Route>
           {/* <Route component={Error} ></Route> */}
-          <Route path={`${PATH}/signin`} exact component={Signin} ></Route>
-          <Route path={`${PATH}/signup`} exact component={Signup} ></Route>
           <Route path={`${PATH}/cart`} exact component={Cart} ></Route>
           <Route path={`${PATH}/orderconfirm`} exact component={OrderConfirm} ></Route>
           <Route component={Error404} />
@@ -68,6 +65,7 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   sendProducts: (payload) => dispatch(getProducts(payload)),
+  sendRef: (clothingRef, accessoryRef) => dispatch(setRef(clothingRef, accessoryRef)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -2,6 +2,8 @@ const initialState = {
     clothing: [],
     accessory: [],
     cart: [],
+    clothingRef: null,
+    accessoryRef: null,
 }
 
 const Reducers = (state = initialState, action) => {
@@ -24,6 +26,8 @@ const Reducers = (state = initialState, action) => {
             return { ...state, cart };
         case "CLEAR_CART":
             return { ...state, cart: [] }
+        case "SET_REF":
+            return { ...state, clothingRef: action.clothingRef, accessoryRef: action.accessoryRef }
         default:
             return state;
     }

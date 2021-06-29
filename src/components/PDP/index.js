@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios"
 import "./index.css"
+import { connect } from 'react-redux';
+import { getCart } from '../../redux/actions';
 
 const PDP = (props) => {
     const { id } = props.match.params
@@ -46,7 +48,7 @@ const PDP = (props) => {
                         }
                     </div>
                 </div>
-                <button className="cart-btn">
+                <button className="cart-btn" onClick={() => props.updateCart(product)}>
                     Add To Cart
                 </button>
             </div>
@@ -54,4 +56,8 @@ const PDP = (props) => {
     );
 }
 
-export default PDP;
+const mapDispatchToProps = (dispatch) => ({
+    updateCart: (payload) => dispatch(getCart(payload)),
+});
+
+export default connect(null, mapDispatchToProps)(PDP);
