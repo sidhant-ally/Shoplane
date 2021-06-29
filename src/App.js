@@ -9,7 +9,6 @@ import PDP from "./components/PDP";
 import './App.css';
 
 // Components
-import ProductGrid from "./components/ProductGrid"
 import TopBar from "./components/TopBar"
 import Home from "./components/Home"
 import { PATH } from "./utils/constants"
@@ -21,7 +20,6 @@ import Cart from "./components/Cart";
 import OrderConfirm from "./components/OrderConfirm";
 
 function App(props) {
-  const { clothing, accessory } = props
   const [loading, updateLoading] = useState(true)
   const clothingRef = useRef()
   const accessoryRef = useRef()
