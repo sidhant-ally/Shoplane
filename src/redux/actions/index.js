@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export const getProducts = (payload) => {
     const clothing = payload.filter(({ isAccessory }) => !isAccessory)
     const accessory = payload.filter(({ isAccessory }) => isAccessory)
@@ -16,6 +18,7 @@ export const getCart = (payload) => {
     }
 }
 export const clearCartProducts = () => {
+    axios.get("https://5d76bf96515d1a0014085cf9.mockapi.io/order")
     return { type: "CLEAR_CART" }
 }
 
