@@ -1,3 +1,5 @@
-.nav-link {
-    cursor: pointer;
+.navbar {
+    box-shadow: 0 2px 5px #ccc;
+    background-color: white;
+    padding: 10px 100px 5px 100px !important;
 }

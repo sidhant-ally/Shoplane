@@ -8,7 +8,7 @@ const Home = (props) => {
     const { clothing, accessory, loading, clothingRef, accessoryRef } = props
 
     return (
-        <div className="App m-4">
+        <div className="App">
             <Posters />
             <div ref={clothingRef}>
                 <h2 className="section-heading">Clothing for Men and Women</h2>

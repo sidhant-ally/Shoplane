@@ -6,8 +6,8 @@ import "./index.css"
 
 const NavBar = ({ cart, clothingRef, accessoryRef }) => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
-            <Link className="navbar-brand" to={`${PATH}`}><span style={{ color: "#009688" }}>SHOP</span>LANE</Link>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <Link className="navbar-brand" to={`${PATH}`}><h2><span style={{ color: "#009688" }}>SHOP</span>LANE</h2></Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>

@@ -10,7 +10,7 @@ const PDP = (props) => {
     const [product, updateProduct] = useState({})
     const [selectedPic, updateSelection] = useState(0)
 
-    const { name = "Product Name", brand = "Product Brand", price = 0, photos = [] } = product;
+    const { name = "Product Name", brand = "Product Brand", description = "Product Description", price = 0, photos = [] } = product;
 
     const handleOnClick = (event) => updateSelection(parseInt(event.target.id))
 
@@ -24,34 +24,36 @@ const PDP = (props) => {
             .catch(err => alert(err))
     }, [id])
 
-    return loading ? <div>Loading...</div> : (
+    return (
         <div className="product">
-            <img id="product-image" alt="Product" src={photos.length ? photos[selectedPic] : ""} />
-            <div className="product-details">
-                <h1 id="product-name">{name}</h1>
-                <h4 id="product-brand">{brand}</h4>
-                <h3>Price: Rs <span id="product-price">{price}</span></h3>
-                <div>
-                    <h3>Description</h3>
-                    <p id="product-description">Product Description</p>
-                </div>
-                <div>
-                    <h3>Product Preview</h3>
-                    <div className="product-preview">
-                        {
-                            photos.map((photo, index) => {
-                                let className = "preview-image"
-                                if (index === selectedPic)
-                                    className = "preview-image preview-selected"
-                                return <img key={index} onClick={handleOnClick} id={index} className={className} src={photo} alt="Product" />
-                            })
-                        }
+            {loading ? <div>Loading...</div> : (<>
+                <img id="product-image" alt="Product" src={photos.length ? photos[selectedPic] : ""} />
+                <div className="product-details">
+                    <h1 id="product-name">{name}</h1>
+                    <h4 id="product-brand">{brand}</h4>
+                    <h3>Price: Rs <span id="product-price">{price}</span></h3>
+                    <div>
+                        <h3>Description</h3>
+                        <p id="product-description">{description}</p>
                     </div>
+                    <div>
+                        <h3>Product Preview</h3>
+                        <div className="product-preview">
+                            {
+                                photos.map((photo, index) => {
+                                    let className = "preview-image"
+                                    if (index === selectedPic)
+                                        className = "preview-image preview-selected"
+                                    return <img key={index} onClick={handleOnClick} id={index} className={className} src={photo} alt="Product" />
+                                })
+                            }
+                        </div>
+                    </div>
+                    <button className="cart-btn" onClick={() => props.updateCart(product)}>
+                        Add To Cart
+                    </button>
                 </div>
-                <button className="cart-btn" onClick={() => props.updateCart(product)}>
-                    Add To Cart
-                </button>
-            </div>
+            </>)}
         </div >
     );
 }

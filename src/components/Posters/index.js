@@ -2,7 +2,7 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 
 const Posters = () => {
-    return (<Carousel style={{ margin: "0px 100px" }}>
+    return (<Carousel>
         <Carousel.Item>
             <img
                 className="d-block w-100"
